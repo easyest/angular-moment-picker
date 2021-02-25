@@ -557,6 +557,13 @@ var Directive = (function () {
                         if (newValue !== oldValue)
                             utility_1.setValue(newValue, $scope, $ctrl, $attrs);
                     });
+                $scope.$watch('model', function (newValue, oldValue) {
+                    if (typeof newValue === "string") {
+                        newValue = moment(newValue);
+                    }
+                    if (newValue !== oldValue)
+                        utility_1.setValue(newValue, $scope, $ctrl, $attrs);
+                });
                 $scope.$watch(function () { return utility_1.momentToValue($ctrl.$modelValue, $scope.format); }, function (newViewValue, oldViewValue) {
                     if (newViewValue == oldViewValue)
                         return;
